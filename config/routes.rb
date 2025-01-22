@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resource :session
+  get "signup", to: "registrations#new", as: :signup
+  post "signup", to: "registrations#create", as: :registrations
+  resource :session, except: [ :new ]
+  get "login", to: "sessions#new", as: :login
   resources :passwords, param: :token
   get "pages/index"
   get "pages/dashboard"
